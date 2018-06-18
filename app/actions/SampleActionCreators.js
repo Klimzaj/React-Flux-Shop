@@ -4,6 +4,7 @@ import axios from 'axios'
 import {withRouter} from 'react-router-dom'
 import LoginComponent from '../components/LoginComponent';
 import { Link } from 'react-router-dom';
+
 const SampleActionCreators = {
 
   action001(arg1) {
@@ -65,23 +66,21 @@ const SampleActionCreators = {
         console.log(error);
       });
     },
-  // action004(arg1) {
-  //   axios.get('http://localhost:3001/api/orders',{
-  //     oid: arg1.oid
-  //   })
-  //   .then(function (response) {
-  //     let result = response.data.data.order
-  //     // console.log(response.data.data.order)
-  //     AppDispatcher.dispatch({
-  //       type: ActionTypes.TYPE_004,
-  //       data: {
-  //         "order": result,
-  //       },
-  //     })
-  //   }).catch(function (error) {
-  //       console.log(error);
-  //   });
-  // },
+  action005(arg1) {
+    axios.get(`http://localhost:3000/api/myInfo/${arg1}`)
+    .then(function (response) {
+      let result = response.data.data.userDetails
+      // console.log(result)
+      AppDispatcher.dispatch({
+        type: ActionTypes.TYPE_005,
+        data: {
+          "myInfo": result
+        },
+      })
+    }).catch(function (error) {
+        console.log(error);
+    });
+  },
   // 
   // action006(arg1) {
   //   axios.post('http://localhost:3001/api/product').then(function (response) {

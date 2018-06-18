@@ -8,6 +8,7 @@ import Menu from './Menu';
 import axios from 'axios'
 import { Container } from 'flux/utils'
 import SampleStore from '../stores/SampleStore'
+import MyInfoContent from './MyInfoContent'
 
 class _MyInfoComponent extends Component {
     static getStores() {
@@ -21,10 +22,16 @@ class _MyInfoComponent extends Component {
 
       constructor(props) {
           super(props)
+          SampleActionCreator.action005(this.props.match.params.id)
             this.state = {
-                
             }
       }
+      createMyInfo = (inf) => {
+        return <MyInfoContent obj={inf} id={this.props.match.params.id} />
+    }
+
+    myInfo = (inf) => inf.map(this.createMyInfo);
+
     render() {
         return (
             <div>
@@ -32,6 +39,9 @@ class _MyInfoComponent extends Component {
             <div style={{display:"flex"}}>
             <Menu id={this.props.match.params.id}/>
             </div>
+                <div>
+                    {this.myInfo(this.state.sample.myInfo)}
+                </div>
             </div>
         )
     }

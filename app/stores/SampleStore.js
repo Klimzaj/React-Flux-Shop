@@ -7,7 +7,8 @@ class SampleStore extends ReduceStore {
   getInitialState() {
     return {
       user: [],
-      productCategory: []
+      productCategory: [],
+      myInfo: []
     };
   }
 
@@ -36,11 +37,11 @@ class SampleStore extends ReduceStore {
         }
         return result004
 
-      // case ActionTypes.TYPE_005:
-      //   const result005 = {
-      //     productCategory: action.data.productCategory
-      //   }
-      //   return result005
+      case ActionTypes.TYPE_005:
+        const result005 = {
+          myInfo: action.data.myInfo
+        }
+        return result005
       default:
         return state;
     } 
