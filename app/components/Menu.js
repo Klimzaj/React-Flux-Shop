@@ -3,14 +3,30 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ListSubheader from 'material-ui/List/ListSubheader';
 import List, { ListItem } from 'material-ui/List';
-// import OrderLoginComponent
-class Menu extends Component {
+import { Container } from 'flux/utils'
+import SampleStore from '../stores/SampleStore'
+import SampleActionCreator from '../actions/SampleActionCreators';
+
+class _Menu extends Component {
+  static getStores() {
+    return [SampleStore];
+  }
+  static calculateState() {
+    return {
+      sample: SampleStore.getState()
+    };
+  }
+  constructor(props){
+   super(props)
+    SampleActionCreator.action001();
+  }
   render() {
+    console.log(this.state.sample)
     return (
       <List style={{width: '15%'}}>
         <ListSubheader>Menu</ListSubheader>
         
-        <ListItem component={Link} to={"/myoinfo"+1}>My info</ListItem>
+        <ListItem component={Link} to={"/myinfo"}>My info</ListItem>
         <ListItem component={Link} to="/myorders">My orders</ListItem>
         <ListItem component={Link} to="/myproducts">My products</ListItem>
         <ListItem component={Link} to="/addproduct">Add product</ListItem>
@@ -23,4 +39,5 @@ class Menu extends Component {
   }
 }
 
+const Menu = Container.create(_Menu);
 export default Menu;

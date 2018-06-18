@@ -1,15 +1,15 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/AppConstants';
 import axios from 'axios'
+import {withRouter} from 'react-router-dom'
 import LoginComponent from '../components/LoginComponent';
 const SampleActionCreators = {
 
-  // action001(arg1) {
-  //   AppDispatcher.dispatch({
-  //     type: ActionTypes.TYPE_001,
-  //     data: 'RESULT OF YOUR ACTION',
-  //   });
-  // },
+  action001(arg1) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.TYPE_001
+    });
+  },
 
   action002(arg1) {
     // console.log(arg1)
@@ -21,7 +21,8 @@ const SampleActionCreators = {
     .then(function (response) {
       let result = response.data.data
       console.log(result)
-      window.location = '/aaaa'
+      // window.location = `/myinfo/1`
+      // history.pushState(`/myinfo/1`);
       AppDispatcher.dispatch({
         type: ActionTypes.TYPE_002,
         data: {
@@ -88,4 +89,4 @@ const SampleActionCreators = {
 
 };
 
-export default SampleActionCreators;
+export default withRouter(SampleActionCreators);

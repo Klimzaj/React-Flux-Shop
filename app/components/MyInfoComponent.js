@@ -21,7 +21,6 @@ class _MyInfoComponent extends Component {
 
       constructor(props) {
           super(props)
-            // SampleActionCreator.action005()//product_category getter
             this.state = {
                 
             }
