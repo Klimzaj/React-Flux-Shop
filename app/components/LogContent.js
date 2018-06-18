@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
@@ -7,11 +8,21 @@ import SampleActionCreator from '../actions/SampleActionCreators';
 
 
 class LogContent extends Component {
-constructor(props) {
+  static getStores() {
+    return [SampleStore];
+    
+}
+static calculateState() {
+    return {
+        sample: SampleStore.getState()
+    };
+}
+  constructor(props) {
     super(props);
     this.state = {
       login: '',
-      password: ''
+      password: '',
+      id: 0
     };
     this.updateLogin = this.updateLogin.bind(this);
     this.updatePassword = this.updatePassword.bind(this);
@@ -33,7 +44,7 @@ constructor(props) {
   updatePassword = (e) =>  {
     if(e.target.value.length >= 5)
     {
-      this.setState({ password: e.target.value });
+        this.aj(e.target.value);
     }
     else{
       console.log('za krotkie');
@@ -48,15 +59,28 @@ constructor(props) {
     }
     return arr.join('');
   }
-  aj() {
+  aj(pass) {
     //logowanie!
-    if(this.state.login !== '' && this.state.password !== '')
+    console.log(this.state.login)
+    console.log(pass)
+    if(this.state.login !== '' && pass !== '')
     {
       const obj = {
         login: this.state.login,
-        password: this.toHex(this.state.password)
+        password: this.toHex(pass)
       }
-      SampleActionCreator.action002(obj);
+      axios.get(`http://localhost:3000/api/login`,
+      {params:{
+        login: obj.login,
+        password: obj.password
+      }})
+      .then(response => {
+        let result = response.data.data.user[0].uid
+        this.setState({id: result});
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
     }
     else {
       console.log("nie zalogowano!");
@@ -83,9 +107,9 @@ constructor(props) {
           onBlur={this.updatePassword}
         />
         <br/>
-        <Button color="secondary" onClick={this.aj}>
-          Add me!
-        </Button>
+        <Link to={`/myinfo/${this.state.id}`}>
+              <Button>Log in!</Button>
+        </Link>
         <p>Nie masz konta?<a href={'/reg'}>Zarejestruj!</a></p>
       </div>
     );

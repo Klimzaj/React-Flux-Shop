@@ -26,12 +26,12 @@ class _Menu extends Component {
       <List style={{width: '15%'}}>
         <ListSubheader>Menu</ListSubheader>
         
-        <ListItem component={Link} to={"/myinfo"}>My info</ListItem>
-        <ListItem component={Link} to="/myorders">My orders</ListItem>
-        <ListItem component={Link} to="/myproducts">My products</ListItem>
-        <ListItem component={Link} to="/addproduct">Add product</ListItem>
-        <ListItem component={Link} to="/cat">Product category</ListItem>
-        <ListItem component={Link} to="/products">All products</ListItem>
+        <ListItem component={Link} to={`/myinfo/${this.props.id}`}>My info</ListItem>
+        <ListItem component={Link} to={`/myorders/${this.props.id}`}>My orders</ListItem>
+        <ListItem component={Link} to={`/myproducts/${this.props.id}`}>My products</ListItem>
+        <ListItem component={Link} to={`/addproduct/${this.props.id}`}>Add product</ListItem>
+        <ListItem component={Link} to={`/cat/${this.props.id}`}>Product category</ListItem>
+        <ListItem component={Link} to={`/products/${this.props.id}`}>All products</ListItem>
         <ListItem component={Link} to="/log">Logout</ListItem>
         
       </List>

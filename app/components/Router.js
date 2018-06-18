@@ -15,14 +15,14 @@ const MyRouter = () => (
     <Switch>
         <Route path="/log" component={LoginComponent}/>
         <Route path="/reg" component={RegistrationComponent}/>
-
+        <Route path="/myinfo/0" component={LoginComponent}/>
         <Route path="/myinfo/:id" component={MyInfo}/>
         <Route path="/myorders/:id" component={MyOrders}/>
         <Route path="/myproducts/:id" component={MyProducts}/>
         <Route path="/cat/:id" component={ProductsCategory}/>
         <Route path="/products/:id" component={AllProducts}/>
        
-        <Route path="/addproduct/:id" component={AddProductComponent}/>
+        <Route path="/addproduct" component={AddProductComponent}/>
 
         <Route component={LoginComponent}/>
     </Switch>

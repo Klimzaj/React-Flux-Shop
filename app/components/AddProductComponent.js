@@ -21,17 +21,16 @@ class _AddProductComponent extends Component {
 
       constructor(props) {
           super(props)
-            // SampleActionCreator.action005()//product_category getter
+            SampleActionCreator.action004()
             this.state = {
-                name: '',
-                price: 0,
-                description: '',
-                productCategory: 0,
-                quantity: 0,
-                u_id: 1,
+                name:'',
+                price:'',
+                description:'',
+                id_u:'',
+                id_pc: 1,
+                productCategory:[]
             }
 
-            console.log(this.state.productCategory)
 
       }
 
@@ -45,41 +44,30 @@ class _AddProductComponent extends Component {
             this.setState({
                 price: e.target.value
             })
-        }else if(e.target.id === 'quantity'){
-            this.setState({
-                quantity: e.target.value
-            })
         }else if(e.target.id === 'description'){
             this.setState({
                 description: e.target.value
             })
-        }else if(e.target.id === 'productCategory'){
+        }else if(e.target.id === 'id_pc'){
             this.setState({
-                productCategory: e.target.value
+                id_pc: e.target.value
             })
         }
 
     }
 
     handleClick = (e) => {
-        console.log(this.state.name)
-        console.log(this.state.price)
-        console.log(this.state.quantity)
-        console.log(this.state.description)
-        console.log(this.state.productCategory)
-
-        axios.post('http://localhost:3001/api/product',{
+        axios.post('http://localhost:3000/api/addProduct',{
             name: this.state.name,
             price: this.state.price,
-            quantity: this.state.quantity,
             description: this.state.description,
-            productCategory: this.state.productCategory,
-            id_u: 1,
-            })//id_u change later to be a value from a cookie or sth?
-            .then(function (response) {
-
-            }).catch(function (error) {
-                console.log(error);
+            id_pc: this.state.id_pc,
+            id_u: this.state.id_u,
+        })
+        .then(function (response) 
+        {})
+        .catch(function (error) {
+            console.log(error);
         });
 
 
@@ -98,6 +86,7 @@ class _AddProductComponent extends Component {
             <div style={{display:"flex"}}>
             <Menu/>
             <div id = "Form" style={{display:"flex", flexDirection: "column"}}>
+            <h1>Add product:</h1>
                 <TextField
                     id="name"
                     label="Name"
@@ -114,14 +103,6 @@ class _AddProductComponent extends Component {
                 />
 
                 <TextField
-                    id="quantity"
-                    label="Amount"
-                    type="number"
-                    onBlur={this.handleChange}
-                    margin="normal"
-                />
-
-                <TextField
                     id="description"
                     label="Item description"
                     type="text"
@@ -131,8 +112,8 @@ class _AddProductComponent extends Component {
 
                 <select
                 onChange= {this.handleChange}
-                name = "productCategory"
-                id = "productCategory">
+                name = "id_pc"
+                id = "id_pc">
 
                     {this.allProductCategory(this.state.sample.productCategory)}
 

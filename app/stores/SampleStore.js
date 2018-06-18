@@ -6,7 +6,8 @@ import { ActionAccountBalanceWallet } from 'material-ui';
 class SampleStore extends ReduceStore {
   getInitialState() {
     return {
-      user: []
+      user: [],
+      productCategory: []
     };
   }
 
@@ -18,7 +19,7 @@ class SampleStore extends ReduceStore {
 
       case ActionTypes.TYPE_002:
         const result = {
-          user: action.data.user
+          user: action.data.user  
         }
         return result;
 
@@ -29,11 +30,11 @@ class SampleStore extends ReduceStore {
       //   }
       //   return result003
 
-      // case ActionTypes.TYPE_004:
-      //   const result004 = {
-      //     order: action.data.order
-      //   }
-      //   return result004
+      case ActionTypes.TYPE_004:
+        const result004 = {
+          productCategory: action.data.productCategory
+        }
+        return result004
 
       // case ActionTypes.TYPE_005:
       //   const result005 = {
