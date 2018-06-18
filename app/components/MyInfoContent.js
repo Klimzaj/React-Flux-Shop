@@ -64,6 +64,17 @@ class MyInfoContent extends Component {
       console.log(error);
     });
   }
+  delUser = () => {
+    axios.post(`http://localhost:3000/api/deleteUser`,{
+      id: this.props.id
+    })
+    .then(function (response) {
+        window.location= '/'
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
 
   render() {
     return (
@@ -113,7 +124,9 @@ class MyInfoContent extends Component {
           onBlur={this.updateInfo}
         />
         <br/>
-        <Button onClick={this.saveInfo}>Zapisz!</Button>
+        <Button onClick={this.saveInfo}>Save!</Button>
+        <br/>
+        <Button onClick={this.delUser}>Delete user!</Button>
       </div>
     );
   }

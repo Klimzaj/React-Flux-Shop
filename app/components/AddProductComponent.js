@@ -26,7 +26,6 @@ class _AddProductComponent extends Component {
                 name:'',
                 price:'',
                 description:'',
-                id_u:'',
                 id_pc: 1,
                 productCategory:[]
             }
@@ -56,12 +55,17 @@ class _AddProductComponent extends Component {
     }
 
     handleClick = (e) => {
+        console.log(this.props.match.params.id)
+        console.log(this.state.id_pc)
+        console.log(this.state.name)
+        console.log(this.state.price)
+        console.log(this.state.description)
         axios.post('http://localhost:3000/api/addProduct',{
             name: this.state.name,
             price: this.state.price,
             description: this.state.description,
             id_pc: this.state.id_pc,
-            id_u: this.state.id_u,
+            id_u: this.props.match.params.id,
         })
         .then(function (response) 
         {})
@@ -118,6 +122,7 @@ class _AddProductComponent extends Component {
 
                 </select>
                 <Button onClick={this.handleClick}>Create an new offert</Button>
+                
             </div>
             </div>
             </div>

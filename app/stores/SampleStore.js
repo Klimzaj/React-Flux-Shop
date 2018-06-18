@@ -8,7 +8,8 @@ class SampleStore extends ReduceStore {
     return {
       user: [],
       productCategory: [],
-      myInfo: []
+      myInfo: [],
+      products: []
     };
   }
 
@@ -20,7 +21,10 @@ class SampleStore extends ReduceStore {
 
       case ActionTypes.TYPE_002:
         const result = {
-          user: action.data.user  
+          user: action.data.user,
+          productCategory: state.productCategory,
+          myInfo: state.myInfo,
+          products: state.products
         }
         return result;
 
@@ -33,15 +37,48 @@ class SampleStore extends ReduceStore {
 
       case ActionTypes.TYPE_004:
         const result004 = {
-          productCategory: action.data.productCategory
+          user: state.user,
+          productCategory: action.data.productCategory,
+          myInfo: state.myInfo,
+          products: state.products
         }
         return result004
 
       case ActionTypes.TYPE_005:
         const result005 = {
-          myInfo: action.data.myInfo
+          user: state.user,
+          productCategory: state.productCategory,
+          myInfo: action.data.myInfo,
+          products: state.products
         }
         return result005
+
+      case ActionTypes.TYPE_006:
+      const result006 = {
+        user: state.user,
+        productCategory: state.productCategory,
+        myInfo: state.myInfo,
+        products: action.data.products
+      }
+        return result006
+
+      case ActionTypes.TYPE_007:
+      const result007 = {
+        user: state.user,
+        productCategory: state.productCategory,
+        myInfo: state.myInfo,
+        products: action.data.products
+      }
+        return result007
+
+      case ActionTypes.TYPE_008:
+      const result008 = {
+          user: state.user,
+          productCategory: state.productCategory,
+          myInfo: state.myInfo,
+          products: action.data.products
+       }
+        return result008
       default:
         return state;
     } 

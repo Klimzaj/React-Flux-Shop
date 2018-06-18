@@ -6,7 +6,6 @@ import RegistrationComponent from "./RegistrationComponent";
 import MyInfo from "./MyInfoComponent";
 import MyOrders from "./MyOrdersComponent";
 import MyProducts from "./MyProductsComponent";
-import ProductsCategory from "./ProductsCategoryComponent";
 import AllProducts from "./AllProductsComponent";
 
 import AddProductComponent from "./AddProductComponent"
@@ -19,7 +18,6 @@ const MyRouter = () => (
         <Route path="/myinfo/:id" component={MyInfo}/>
         <Route path="/myorders/:id" component={MyOrders}/>
         <Route path="/myproducts/:id" component={MyProducts}/>
-        <Route path="/cat/:id" component={ProductsCategory}/>
         <Route path="/products/:id" component={AllProducts}/>
        
         <Route path="/addproduct/:id" component={AddProductComponent}/>

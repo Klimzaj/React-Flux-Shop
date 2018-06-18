@@ -4,7 +4,9 @@ const ActionTypes = {
   TYPE_003: 'type-003',
   TYPE_004: 'type-004',
   TYPE_005: 'type-005',
-  // TYPE_006: 'type-006'
+  TYPE_006: 'type-006',
+  TYPE_007: 'type-007',
+  TYPE_008: 'type-008'
   
   
 }

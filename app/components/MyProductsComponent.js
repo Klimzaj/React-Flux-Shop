@@ -8,6 +8,7 @@ import Menu from './Menu';
 import axios from 'axios'
 import { Container } from 'flux/utils'
 import SampleStore from '../stores/SampleStore'
+import MyProductContent from './MyProductContent'
 
 class _MyProductsComponent extends Component {
     static getStores() {
@@ -21,73 +22,23 @@ class _MyProductsComponent extends Component {
 
       constructor(props) {
           super(props)
-            // SampleActionCreator.action005()//product_category getter
-            this.state = {
-                
-            }
+            SampleActionCreator.action008(this.props.match.params.id)
       }
+      createProduct = (p) => {
+        //   console.log(p)
+        return <MyProductContent obj={p} id={this.props.match.params.id} />
+    }
 
-    // handleChange = (e) => {
-    //     if(e.target.id === 'name') {
-    //         this.setState({
-    //             name: e.target.value
-    //         })
-            
-    //     }else if(e.target.id === 'price'){
-    //         this.setState({
-    //             price: e.target.value
-    //         })
-    //     }else if(e.target.id === 'quantity'){
-    //         this.setState({
-    //             quantity: e.target.value
-    //         })
-    //     }else if(e.target.id === 'description'){
-    //         this.setState({
-    //             description: e.target.value
-    //         })
-    //     }else if(e.target.id === 'productCategory'){
-    //         this.setState({
-    //             productCategory: e.target.value
-    //         })
-    //     }
-
-    // }
-
-    // handleClick = (e) => {
-    //     console.log(this.state.name)
-    //     console.log(this.state.price)
-    //     console.log(this.state.quantity)
-    //     console.log(this.state.description)
-    //     console.log(this.state.productCategory)
-
-    //     axios.post('http://localhost:3001/api/product',{
-    //         name: this.state.name,
-    //         price: this.state.price,
-    //         quantity: this.state.quantity,
-    //         description: this.state.description,
-    //         productCategory: this.state.productCategory,
-    //         id_u: 1,
-    //         })//id_u change later to be a value from a cookie or sth?
-    //         .then(function (response) {
-
-    //         }).catch(function (error) {
-    //             console.log(error);
-    //     });
-
-
-    // }
-
-    // createProductCategory = (productCategory) => {
-    //     return <option name={productCategory.pcid} value={productCategory.pcid}>{productCategory.name}</option>
-    // }
-    // allProductCategory = (productCategory) => productCategory.map(this.createProductCategory);
-
+    showProducts = (p) => p.map(this.createProduct);
     render() {
         return (
             <div>
             <Navi title="Orders"/>
             <div style={{display:"flex"}}>
             <Menu id={this.props.match.params.id}/>
+            <ul>
+            {this.showProducts(this.state.sample.products)}
+            </ul>
             </div>
             </div>
         )

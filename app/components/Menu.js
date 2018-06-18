@@ -17,7 +17,6 @@ class Menu extends Component {
         <ListItem component={Link} to={`/myorders/${this.props.id}`}>My orders</ListItem>
         <ListItem component={Link} to={`/myproducts/${this.props.id}`}>My products</ListItem>
         <ListItem component={Link} to={`/addproduct/${this.props.id}`}>Add product</ListItem>
-        <ListItem component={Link} to={`/cat/${this.props.id}`}>Product category</ListItem>
         <ListItem component={Link} to={`/products/${this.props.id}`}>All products</ListItem>
         <ListItem component={Link} to="/log">Logout</ListItem>
         

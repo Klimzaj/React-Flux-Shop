@@ -8,6 +8,7 @@ import Menu from './Menu';
 import axios from 'axios'
 import { Container } from 'flux/utils'
 import SampleStore from '../stores/SampleStore'
+import ProductContent from './ProductContent'
 
 class _AllProductsComponent extends Component {
     static getStores() {
@@ -21,17 +22,22 @@ class _AllProductsComponent extends Component {
 
       constructor(props) {
           super(props)
-            // SampleActionCreator.action005()//product_category getter
-            this.state = {
-                
-            }
+            SampleActionCreator.action006()
       }
+      createProduct = (p) => {
+        return <ProductContent obj={p} id={this.props.match.params.id} />
+    }
+
+    showProducts = (p) => p.map(this.createProduct);
     render() {
         return (
             <div>
             <Navi title="Orders"/>
             <div style={{display:"flex"}}>
             <Menu id={this.props.match.params.id}/>
+            <ul>
+            {this.showProducts(this.state.sample.products)}
+            </ul>
             </div>
             </div>
         )

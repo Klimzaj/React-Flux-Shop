@@ -35,13 +35,13 @@ class _MyInfoComponent extends Component {
     render() {
         return (
             <div>
-            <Navi title="Orders"/>
+            <Navi title="User Info"/>
             <div style={{display:"flex"}}>
             <Menu id={this.props.match.params.id}/>
+            {this.myInfo(this.state.sample.myInfo)}
             </div>
-                <div>
-                    {this.myInfo(this.state.sample.myInfo)}
-                </div>
+                {/* <div> */}
+                {/* </div> */}
             </div>
         )
     }

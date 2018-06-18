@@ -70,11 +70,52 @@ const SampleActionCreators = {
     axios.get(`http://localhost:3000/api/myInfo/${arg1}`)
     .then(function (response) {
       let result = response.data.data.userDetails
-      // console.log(result)
       AppDispatcher.dispatch({
         type: ActionTypes.TYPE_005,
         data: {
           "myInfo": result
+        },
+      })
+    }).catch(function (error) {
+        console.log(error);
+    });
+  },
+  action006(arg1) {
+    axios.get(`http://localhost:3000/api/allProducts`)
+    .then(function (response) {
+      let result = response.data.data.product
+      AppDispatcher.dispatch({
+        type: ActionTypes.TYPE_006,
+        data: {
+          "products": result
+        },
+      })
+    }).catch(function (error) {
+        console.log(error);
+    });
+  },
+  action007(arg1) { //my orders
+    axios.get(`http://localhost:3000/api/productBoughtId/${arg1}`)
+    .then(function (response) {
+      let result = response.data.data.product
+      AppDispatcher.dispatch({
+        type: ActionTypes.TYPE_007,
+        data: {
+          "products": result
+        },
+      })
+    }).catch(function (error) {
+        console.log(error);
+    });
+  },
+  action008(arg1) { //my products
+    axios.get(`http://localhost:3000/api/productId/${arg1}`)
+    .then(function (response) {
+      let result = response.data.data.product
+      AppDispatcher.dispatch({
+        type: ActionTypes.TYPE_008,
+        data: {
+          "products": result
         },
       })
     }).catch(function (error) {
