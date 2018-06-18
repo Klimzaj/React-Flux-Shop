@@ -22,7 +22,7 @@ const MyRouter = () => (
         <Route path="/cat/:id" component={ProductsCategory}/>
         <Route path="/products/:id" component={AllProducts}/>
        
-        <Route path="/addproduct" component={AddProductComponent}/>
+        <Route path="/addproduct/:id" component={AddProductComponent}/>
 
         <Route component={LoginComponent}/>
     </Switch>

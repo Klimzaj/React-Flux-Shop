@@ -31,7 +31,6 @@ class _AddProductComponent extends Component {
                 productCategory:[]
             }
 
-
       }
 
     handleChange = (e) => {
@@ -84,7 +83,7 @@ class _AddProductComponent extends Component {
             <div id = "AddProductComponent">
             <Navi title="Orders"/>
             <div style={{display:"flex"}}>
-            <Menu/>
+            <Menu id={this.props.match.params.id}/>
             <div id = "Form" style={{display:"flex", flexDirection: "column"}}>
             <h1>Add product:</h1>
                 <TextField

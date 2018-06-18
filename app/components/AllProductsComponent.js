@@ -31,7 +31,7 @@ class _AllProductsComponent extends Component {
             <div>
             <Navi title="Orders"/>
             <div style={{display:"flex"}}>
-            <Menu/>
+            <Menu id={this.props.match.params.id}/>
             </div>
             </div>
         )

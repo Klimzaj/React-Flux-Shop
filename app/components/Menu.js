@@ -7,21 +7,8 @@ import { Container } from 'flux/utils'
 import SampleStore from '../stores/SampleStore'
 import SampleActionCreator from '../actions/SampleActionCreators';
 
-class _Menu extends Component {
-  static getStores() {
-    return [SampleStore];
-  }
-  static calculateState() {
-    return {
-      sample: SampleStore.getState()
-    };
-  }
-  constructor(props){
-   super(props)
-    SampleActionCreator.action001();
-  }
+class Menu extends Component {
   render() {
-    console.log(this.state.sample)
     return (
       <List style={{width: '15%'}}>
         <ListSubheader>Menu</ListSubheader>
@@ -39,5 +26,4 @@ class _Menu extends Component {
   }
 }
 
-const Menu = Container.create(_Menu);
 export default Menu;
